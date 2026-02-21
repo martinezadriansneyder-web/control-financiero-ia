@@ -57,7 +57,12 @@ CATEGORIAS_VALIDAS = {"Comida", "Transporte",
 env_path = Path(__file__).with_name(".env")
 load_dotenv(env_path, override=True)
 
-API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
+# 🔐 Si estamos en Streamlit Cloud, usar secrets
+if hasattr(st, "secrets"):
+    if "OPENAI_API_KEY" in st.secrets:
+        os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
+API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=API_KEY) if API_KEY else None
 
 
