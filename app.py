@@ -395,24 +395,12 @@ with colB:
         st.rerun()
 
 st.divider()
-# --- Moneda ---
-moneda = st.selectbox(
-    "Moneda",
-    ["USD", "COP"],
-    index=0,
-    key="moneda_dashboard"
-)
+
+# Moneda fija (sin selector)
 simbolo = "$"
 decimales = 2
 
-if moneda == "USD":
-    simbolo = "$"
-    decimales = 2
-else:
-    simbolo = "COP $"
-    decimales = 0
-
-    # --- Totales (Día / Semana / Mes) ---
+# --- Totales (Día / Semana / Mes) ---
 
 
 # --- Filtros ---
